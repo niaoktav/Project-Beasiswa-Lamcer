@@ -21,16 +21,21 @@
             min-height:100vh;
         }
 
+        /* UKURAN DIKUNCI SAMA PERSIS (Lebar 320px, Tinggi 500px) */
         .card{
             width:320px;
+            height:500px;
             background:white;
             border-radius:5px;
             overflow:hidden;
             box-shadow:0 2px 10px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .content{
-            padding:25px;
+            padding:25px 25px 10px 25px;
         }
 
         .logo{
@@ -104,26 +109,20 @@
         .gambar-bawah{
             width:100%;
             display:block;
+            margin-top: auto;
         }
     </style>
 </head>
 <body>
 
 <div class="card">
-
     <div class="content">
-
-        <img src="{{ asset('images/logo_lamcer.png') }}" alt="Logo" class="logo">
-
+        <img src="{{ asset('images/logo_lamcer.jpeg') }}" alt="Logo" class="logo">
         <h2 class="title">Selamat Datang</h2>
-
-        <p class="subtitle">
-            Masuk untuk mengakses layanan
-        </p>
+        <p class="subtitle">Masuk untuk mengakses layanan</p>
 
         <form action="/register" method="POST">
             @csrf
-
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" name="name" required>
@@ -139,23 +138,15 @@
                 <input type="password" name="password" required>
             </div>
 
-            <button type="submit" class="btn">
-                Daftar
-            </button>
+            <button type="submit" class="btn">Daftar</button>
 
             <div class="login-link">
-                Sudah punya akun?
-                <a href="/login">Masuk</a>
+                Sudah punya akun? <a href="/login">Masuk</a>
             </div>
-
         </form>
-
     </div>
 
-    <img src="{{ asset('images/gambar_bawah.jpeg') }}"
-         alt="Background"
-         class="gambar-bawah">
-
+    <img src="{{ asset('images/gambar_bawah.jpeg') }}" alt="Background" class="gambar-bawah">
 </div>
 
 </body>
