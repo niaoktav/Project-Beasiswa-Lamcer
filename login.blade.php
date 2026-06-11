@@ -21,16 +21,21 @@
             min-height:100vh;
         }
 
+        /* UKURAN DIKUNCI SAMA PERSIS (Lebar 320px, Tinggi 500px) */
         .card{
             width:320px;
+            height:500px; 
             background:white;
             border-radius:5px;
             overflow:hidden;
             box-shadow:0 2px 10px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Memaksa gambar bawah tetap di dasar card */
         }
 
         .content{
-            padding:25px;
+            padding:25px 25px 10px 25px;
         }
 
         .logo{
@@ -73,17 +78,26 @@
             padding:0 10px;
         }
 
-        .opsi{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            margin-top:10px;
-            font-size:11px;
+        .opsi-login {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
 
-        .opsi a{
-            color:#f06b6b;
-            text-decoration:none;
+        .opsi-login label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .opsi-login a {
+            color: #f06b6b;
+            text-decoration: none;
         }
 
         .btn{
@@ -104,7 +118,7 @@
 
         .register-link{
             text-align:center;
-            margin-top:10px;
+            margin-top:12px;
             font-size:11px;
         }
 
@@ -117,26 +131,20 @@
         .gambar-bawah{
             width:100%;
             display:block;
+            margin-top: auto; /* Memastikan nempel di dasar flex */
         }
     </style>
 </head>
 <body>
 
 <div class="card">
-
     <div class="content">
-
-        <img src="{{ asset('images/logo_lamcer.png') }}" alt="Logo" class="logo">
-
+        <img src="{{ asset('images/logo_lamcer.jpeg') }}" alt="Logo" class="logo">
         <h2 class="title">Selamat Datang</h2>
-
-        <p class="subtitle">
-            Masuk untuk mengakses layanan
-        </p>
+        <p class="subtitle">Masuk untuk mengakses layanan</p>
 
         <form action="/login" method="POST">
             @csrf
-
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" name="email" required>
@@ -147,32 +155,22 @@
                 <input type="password" name="password" required>
             </div>
 
-            <div class="opsi">
+            <div class="opsi-login">
                 <label>
-                    <input type="checkbox" name="remember">
-                    Ingatkan Saya
+                    <input type="checkbox" name="remember"> Ingat Saya
                 </label>
-
-                <a href="#">Lupa Password?</a>
+                <a href="#">Lupa password?</a>
             </div>
 
-            <button type="submit" class="btn">
-                MASUK
-            </button>
+            <button type="submit" class="btn">MASUK</button>
 
             <div class="register-link">
-                Belum punya akun?
-                <a href="/register">Daftar Sekarang</a>
+                Belum punya akun? <a href="/register">Daftar Sekarang</a>
             </div>
-
         </form>
-
     </div>
 
-    <img src="{{ asset('images/gambar_bawah.jpeg') }}"
-         alt="Background"
-         class="gambar-bawah">
-
+    <img src="{{ asset('images/gambar_bawah.jpeg') }}" alt="Background" class="gambar-bawah">
 </div>
 
 </body>
